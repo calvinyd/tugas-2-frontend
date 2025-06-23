@@ -1,1 +1,153 @@
-<h1>Halo dunia!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portofolio | Calvin Verdonk</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1443428018053-13da55589fed?q=80&w=2940&auto=format&fit=crop') no-repeat center/cover;
+      color: #333;
+      min-height: 100vh;
+    }
+    header.judul {
+      color: #fff;
+      text-align: center;
+      font-size: 3rem;
+      padding: 80px 20px 40px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+    .container-kotak {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    .kotak {
+      background-color: rgba(240,248,255,0.6);
+      width: 200px;
+      height: 120px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform .3s ease, background-color .3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .kotak:hover {
+      transform: translateY(-5px);
+      background-color: rgba(240,248,255,0.8);
+    }
+    .kotak p {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #1f2225;
+      text-align: center;
+    }
+    section {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      display: none;
+      animation: fadeIn .5s ease;
+    }
+    section h2 {
+      margin-bottom: 15px;
+      border-bottom: 2px solid #dedede;
+      padding-bottom: 10px;
+      font-size: 2rem;
+    }
+    section.active { display: block; }
+    @keyframes fadeIn { from {opacity: 0} to {opacity:1} }
+    .projects ul { list-style: disc inside; }
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact input, .contact textarea {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+    }
+    .contact button {
+      padding: 12px;
+      font-size: 1rem;
+      background-color: #1f2225;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color .3s ease;
+    }
+    .contact button:hover { background-color: #333; }
+  </style>
+</head>
+<body>
+
+  <header class="judul">HELLO, I'M CALVIN YUDA BAGASCORO</header>
+
+  <div class="container-kotak">
+    <div class="kotak" data-target="about">
+      <p>ABOUT ME</p>
+    </div>
+    <div class="kotak" data-target="projects">
+      <p>MY PROJECTS</p>
+    </div>
+    <div class="kotak" data-target="contact">
+      <p>CONTACT</p>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hai! Saya Calvin Yuda Bagascoro, seorang mahasiswa di Universitas Pamulang. 
+      Saya memiliki minat besar dalam membuat website yang menarik, responsif, dan user-friendly.
+      saya sangat ingin menjadi web developer yang handal, dengan bergabung menjadi keluarga besar Universitas Pamulang saya percaya diri untuk bisa berkembang.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <ul>
+        <li><strong>Personal Portfolio Website</strong> – Website ini sendiri, dibuat dengan HTML, CSS & JS.</li>
+        <li><strong>To‑Do List App</strong> – Aplikasi sederhana untuk mengelola tugas harian menggunakan JavaScript.</li>
+        <li><strong>Blog Platform</strong> – Platform blog statis dengan Hugo + Tailwind CSS.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact">
+      <form onsubmit="alert('Thank you! I will get back to you soon. ✉️'); return false;">
+        <input type="text" name="name" placeholder="Your Name" required/>
+        <input type="email" name="email" placeholder="Your Email" required/>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">SEND MESSAGE</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const kotakEls = document.querySelectorAll('.kotak');
+    kotakEls.forEach(el => el.addEventListener('click', () => {
+      const target = el.dataset.target;
+      document.querySelectorAll('section').forEach(sec => {
+        sec.id === target ? sec.classList.add('active') : sec.classList.remove('active');
+      });
+      window.location = `#${target}`;
+    }));
+  </script>
+
+</body>
+</html>
